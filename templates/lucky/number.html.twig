@@ -1,2 +1,10 @@
-{# templates/lucky/number.html.twig #}
-<h1>Your lucky number is {{ number }}</h1>
+{% extends 'base.html.twig' %}
+{% block body %}
+	{# templates/lucky/number.html.twig #}
+	<div class="container">
+		<h1 class="display-1">Your lucky number is
+			{{ number }}
+			<small class="text-muted">With faded secondary text</small>
+		</h1>
+	</div>
+{% endblock %}
