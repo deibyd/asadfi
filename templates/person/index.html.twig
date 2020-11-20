@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PersonController!
+{% endblock %}
+
+{% block body %}
+
+	<table class="table">
+		<tr>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Email</th>
+			<th>Password</th>
+			<th>Fecha de cración</th>
+			<th>Fecha de actualización</th>
+		</tr>
+
+		{% for person in persons %}
+			<tr>
+				<td>{{person.id}}</td>
+				<td>{{person.name}}</td>
+				<td>{{person.email}}</td>
+				<td>{{person.password}}</td>
+				<td>{{person.creationDate|date('Y-m-d H:i:s')}}</td>
+				{% if person.lastUpdate|striptags|trim %}
+					<td>{{person.lastUpdate|date('Y-m-d H:i:s')}}</td>
+				{% else %}
+					<td>--</td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+	</table>
+
+	<div class="example-wrapper">
+		{% for person in persons %}
+			<h1 class="display-3">Hello
+				{{ person.name }}! ✅</h1>
+		{% endfor %}
+		This friendly message is coming from:
+		<ul>
+			<li>Your controller at
+				<code>
+					<a href="{{ 'C:/Users/david/symfony/asadfi/src/Controller/PersonController.php'|file_link(0) }}">src/Controller/PersonController.php</a>
+				</code>
+			</li>
+			<li>Your template at
+				<code>
+					<a href="{{ 'C:/Users/david/symfony/asadfi/templates/person/index.html.twig'|file_link(0) }}">templates/person/index.html.twig</a>
+				</code>
+			</li>
+		</ul>
+	</div>
+{% endblock %}
